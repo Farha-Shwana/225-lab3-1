@@ -51,8 +51,7 @@ pipeline {
         stage('Check Kubernetes Cluster') {
             steps {
                 script {
-                   // sh "kubectl get all"
-                    sh "kubectl --kubeconfig=/var/lib/jenkins/kubeconfigs/shwanaf-225 get all"
+                   sh "kubectl get all"
                 }
             }
         }
