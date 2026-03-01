@@ -40,9 +40,9 @@ pipeline {
             steps {
                 script {
                     // Set up Kubernetes configuration using the specified KUBECONFIG
-                     def kubeConfig = readFile(KUBECONFIG)
+                    def kubeConfig = readFile(shwanaf-255)
                     // Update deployment-dev.yaml to use the new image tag
-                    sh "sed -i 's|cithit/shwanaf:latest|cithit/shwanaf:${IMAGE_TAG}|' deployment-dev.yaml"
+                    sh "sed -i 's|${DOCKER_IMAGE}:latest|${DOCKER_IMAGE}:${IMAGE_TAG}|' deployment-dev.yaml
                     sh "kubectl apply -f deployment-dev.yaml"
                 }
             }
