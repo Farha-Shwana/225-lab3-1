@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']],
+                checkout([$class: 'GitSCM', branches: [[name: 'main']],
                           userRemoteConfigs: [[url: "${GITHUB_URL}"]]])
             }
         }
