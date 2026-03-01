@@ -14,16 +14,16 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: cithit/roseaw:latest     #<-------------------change this to match your MiamiID
+        image: cithit/shwanaf:latest     #<-------------------change this to match your MiamiID
         ports:
         - containerPort: 80  # Expose NGINX on port 80
 
 ---
-  apiVersion: v1
-  kind: Service
-  metadata:
+apiVersion: v1
+kind: Service
+metadata:
     name: dev-service
-  spec:
+spec:
     selector:
       app: nginx
     type: NodePort
