@@ -42,8 +42,10 @@ pipeline {
                     // Set up Kubernetes configuration using the specified KUBECONFIG
                     def kubeConfig = readFile(KUBECONFIG)
                     // Update deployment-dev.yaml to use the new image tag
-                    sh "sed -i 's|${DOCKER_IMAGE}:latest|${DOCKER_IMAGE}:${IMAGE_TAG}|' deployment-dev.yaml
-                    sh "kubectl apply -f deployment-dev.yaml"
+                    // sh "sed -i 's|${DOCKER_IMAGE}:latest|${DOCKER_IMAGE}:${IMAGE_TAG}|' deployment-dev.yaml
+                    sh "sed -i 's|cithit/shwanaf:latest|cithit/shwanaf:${IMAGE_TAG}|' deployment-dev.yaml"
+                    // sh "kubectl apply -f deployment-dev.yaml"
+                    sh "kubectl --kubeconfig=/var/lib/jenkins/kubeconfigs/shwanaf-225 apply -f deployment-dev.yaml"
                 }
             }
         }
@@ -51,7 +53,8 @@ pipeline {
         stage('Check Kubernetes Cluster') {
             steps {
                 script {
-                    sh "kubectl get all"
+                   // sh "kubectl get all"
+                    sh "kubectl --kubeconfig=/var/lib/jenkins/kubeconfigs/shwanaf-225 get all"
                 }
             }
         }
